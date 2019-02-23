@@ -13,7 +13,6 @@ namespace TitleCapitalizationTool
                 new SpaceAndLettersRefactor(), new SymbolsRefactor()
             };
 
-
             return result;
         }
     }
