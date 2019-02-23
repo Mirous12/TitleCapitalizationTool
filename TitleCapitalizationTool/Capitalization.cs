@@ -15,12 +15,18 @@ namespace TitleCapitalizationTool
                 workingString = Console.ReadLine();
             }
 
+            // ReSharper disable once InvertIf
             if ( workingString.Length > 0 )
             {
-                
+                var refactoringRules = RulesFabric.GetRefactoringRules();
+
+                foreach ( var rule in refactoringRules )
+                {
+                    workingString = rule.RefactorString( workingString );
+                }
             }
 
-            return "";
+            return workingString;
         }
     }
 }

@@ -5,30 +5,7 @@ using System.Linq;
 namespace TitleCapitalizationTool.StringRefactorModules
 {
     public class SpaceAndLettersRefactor : StringRefactorRule
-    {
-        private string GatherString( IReadOnlyCollection< string > wordsArray )
-        {
-            string result = "";
-
-            // ReSharper disable once InvertIf
-            if ( wordsArray.Count > 0 )
-            {
-                for ( int i = 0; i < wordsArray.Count; i++ )
-                {
-                    if ( i == 0 )
-                    {
-                        result += wordsArray.ElementAt( i );
-                    }
-                    else
-                    {
-                        result += " " + wordsArray.ElementAt( i );
-                    }
-                }
-            }
-
-            return result;
-        }
-        
+    { 
         public override string RefactorString( string value )
         {
             string resultingString = "";
@@ -36,11 +13,11 @@ namespace TitleCapitalizationTool.StringRefactorModules
             // ReSharper disable once InvertIf
             if ( value.Length > 0 )
             {
-                string[] words = value.Split( ' ' );
+                List< string > words = new List< string >( value.Split( ' ' ) );
 
-                for ( int i = 0; i < words.Length; i++ )
+                for ( int i = 0; i < words.Count; i++ )
                 {
-                    if ( i == 0 || i == words.Length - 1 )
+                    if ( i == 0 || i == words.Count - 1 )
                     {
                         words[ i ] = words[ i ].ToLower();
 
@@ -49,6 +26,29 @@ namespace TitleCapitalizationTool.StringRefactorModules
                     else
                     {
                         words[ i ] = words[ i ].ToLower();
+                    }
+                }
+
+                for (int i = 0; i < words.Count; i++)
+                {
+                    if ( words[i].Length == 1 && words[i] == " " )
+                    {
+                        words.RemoveAt( i );
+                        i--;
+                        continue;
+                    }
+
+                    while ( words[i].IndexOf( ' ' ) != -1 )
+                    {
+                        int pos = words[i].IndexOf( ' ' );
+
+                        words[i].Remove( pos, 1 );
+                    }
+
+                    if ( words[i] == "" )
+                    {
+                        words.RemoveAt( i );
+                        i--;
                     }
                 }
 

@@ -10,7 +10,9 @@ namespace TitleCapitalizationTool
             {
                 Capitalization capitalization = new Capitalization();
 
-                capitalization.CapitalizeString();
+                string result = capitalization.CapitalizeString();
+
+                Console.WriteLine( "New string is: " + result );
             }
         }
     }
