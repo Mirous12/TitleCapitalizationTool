@@ -6,7 +6,12 @@ namespace TitleCapitalizationTool
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if ( args.Length == 0 )
+            {
+                Capitalization capitalization = new Capitalization();
+
+                capitalization.CapitalizeString();
+            }
         }
     }
 }
