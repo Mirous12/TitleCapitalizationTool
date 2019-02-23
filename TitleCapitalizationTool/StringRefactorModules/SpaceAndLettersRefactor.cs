@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TitleCapitalizationTool.StringRefactorModules
 {
@@ -42,9 +40,11 @@ namespace TitleCapitalizationTool.StringRefactorModules
                     {
                         int pos = words[i].IndexOf( ' ' );
 
+                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                         words[i].Remove( pos, 1 );
                     }
 
+                    // ReSharper disable once InvertIf
                     if ( words[i] == "" )
                     {
                         words.RemoveAt( i );

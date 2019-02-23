@@ -4,6 +4,7 @@ namespace TitleCapitalizationTool
 {
     public class Capitalization
     {
+        // ReSharper disable once MemberCanBeMadeStatic.Global
         public string CapitalizeString( string inputString = "" )
         {
             string workingString = "";
@@ -16,7 +17,7 @@ namespace TitleCapitalizationTool
             }
 
             // ReSharper disable once InvertIf
-            if ( workingString.Length > 0 )
+            if ( !string.IsNullOrEmpty( workingString ) )
             {
                 var refactoringRules = RulesFabric.GetRefactoringRules();
 
